@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<body>
+    <% if (!locals.signedIn) { %>
+        <form action="/signin" method="post">
+            <input type="text" name="login" placeholder="Login" value=" <%= login %> ">
+            <input type="password" name="password" placeholder="Password" value=" <%= password %>">
+            <input type="checkbox" name="save" value="checked" <%=save %>> เก็บไว้ในเครื่อง <br />
+            <button>ส่งข้อมูล</button>
+        </form>
+        <% } %>
+            <div id="result">
+                <% if (login && signedIn) { %>
+                    สวัสดีครับ คุณ <%= login%> <br>
+                        <h4>คุณเข้าสู่ระบบแล้ว</h4>
+                        <a href="/signout"> ออกจากระบบ </a>
+                        <% } else if (locals.valid==false) { %>
+                            <h4 style="color:red">คุณ login หรือ password ผิด</h4>
+                            <% } %>
+            </div>
+</body>
+
+</html>
